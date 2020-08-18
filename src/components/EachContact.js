@@ -3,7 +3,7 @@ import React from 'react'
 const EachContact = (props) => {
   return (
     <>
-      <p>{props.contact.name}</p>
+      <div key={props.contact.id}>{props.contact.name}</div>
     </>
   )
 }
