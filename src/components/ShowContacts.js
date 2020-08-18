@@ -3,9 +3,13 @@ import EachContact from './EachContact'
 
 const ShowContacts = (props) => {
 
-    let contactsArr = props.contacts.map(contact =>{
+    let mycontacts = [...props.contacts];
+    mycontacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
+    let contactsArr = mycontacts.map(contact =>{
         return <EachContact contact={contact}/>
     })
+
+    
   return (
     <>
       <h3> Contacts: </h3>
