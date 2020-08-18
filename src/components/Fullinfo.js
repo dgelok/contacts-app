@@ -1,9 +1,14 @@
 import React from 'react'
+import Editform from './Editform'
 
 const Fullinfo = (props) => {
 
     let deleteme = () =>{
         props.handleDelete(props.contact.id)
+    }
+
+    let editme = () =>{
+        props.handleEdit(props.contact.id)
     }
   return (
     <>
@@ -12,7 +17,8 @@ const Fullinfo = (props) => {
       <div>{props.contact.address}</div>
       <div>{props.contact.city}, {props.contact.state} {props.contact.zip}</div>
       <div>Delete? <button onClick={deleteme}>X</button></div>
-      <br />
+      <div>Edit? <button onClick={editme}>O</button></div>
+      {props.contact.edit ? <Editform handleUpdate={props.handleUpdate} contact={props.contact}/> : <br />}
     </>
   )
 }

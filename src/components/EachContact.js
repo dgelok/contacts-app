@@ -11,7 +11,7 @@ const EachContact = (props) => {
   return (
     <>
       <div onClick={clickme} key={props.contact.id}>{props.contact.name}: {props.contact.city}, {props.contact.state}</div>
-      {isShown ? <Fullinfo contact={props.contact} handleDelete={props.handleDelete}/> : <br />}
+      {isShown ? <Fullinfo contact={props.contact} handleDelete={props.handleDelete} handleEdit={props.handleEdit} handleUpdate={props.handleUpdate}/> : <br />}
     </>
   )
 }

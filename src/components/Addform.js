@@ -17,7 +17,8 @@ class Addform extends Component {
       city: this.refs.city.value,
       state: this.refs.state.value,
       zip: this.refs.name.value,
-      isShown: false
+      isShown: false,
+      edit: false
     };
     console.log(newguy)
     this.props.handleAdd(newguy);
