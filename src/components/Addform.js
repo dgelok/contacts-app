@@ -14,7 +14,7 @@ class Addform extends Component {
             city: this.refs.city.value,
             state: this.refs.state.value,
             zip: this.refs.name.value,
-        }
+        };
         let newCList = this.state.contacts;
         newCList.push(newContact);
         this.setState({
