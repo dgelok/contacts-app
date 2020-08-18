@@ -25,6 +25,8 @@ class App extends Component {
       city: "Sugar Land",
       state: "TX",
       zip: "77479",
+      isShown: false,
+      edit: false
     },
     {
       id: uuidv1(),
@@ -34,17 +36,21 @@ class App extends Component {
       address: "4123 Cumberland Dr",
       city: "El Paso",
       state: "TX",
-      zip: "78909"
+      zip: "78909",
+      isShown: false,
+      edit: false
     },
     {
-      
+      id: uuidv1(),
       name: "Karrie Coffman",
       email: "CK@gmail.com",
       phone: "123-123-1234",
       address: "15 The Hollow",
       city: "Amherst",
       state: "MA",
-      zip: "01002"
+      zip: "01002",
+      isShown: false,
+      edit: false
     }];
 
     await this.setState({
@@ -63,12 +69,70 @@ class App extends Component {
   
   }
 
+  handleUpdate = (contact) =>{
+    // console.log("handling an update")
+    let oldContacts = [...this.state.contacts];
+    let index = oldContacts.findIndex(obj =>{
+      return obj.id === contact.id
+    });
+
+    oldContacts.splice(index, 1);
+    oldContacts.push(contact);
+
+    this.setState({
+      contacts: oldContacts
+    })    
+  }
+
+  handleDelete = (id) =>{
+    let oldContacts = [...this.state.contacts];
+    let index = oldContacts.findIndex(obj =>{
+      return obj.id === id
+    });
+
+    oldContacts.splice(index, 1);
+
+    this.setState({
+      contacts: oldContacts
+    })
+  }
+  
+  handleEdit = (id) =>{
+    let oldContacts = [...this.state.contacts];
+    let index = oldContacts.findIndex(obj =>{
+      return obj.id === id
+    });
+
+    oldContacts.[index].edit = true;
+    
+    this.setState({
+      contacts: oldContacts
+    })
+  }
+  search = (e) =>{
+    console.log(e.target.value)
+  }
+
+  handleClick = (id) =>{
+    let oldContacts = [...this.state.contacts];
+    let index = oldContacts.findIndex(obj =>{
+      return obj.id === id
+    });
+
+    oldContacts.[index].isShown = true;
+    
+    this.setState({
+      contacts: oldContacts
+    })
+  }
+
+
   render() {
     return (
       <>
         <h1>Contacts List</h1>
         <Addform handleAdd={this.handleAdd}/>
-        <ShowContacts contacts={this.state.contacts}/>
+        <ShowContacts search={this.search} contacts={this.state.contacts} handleClick={this.handleClick} handleDelete={this.handleDelete} handleEdit={this.handleEdit} handleUpdate={this.handleUpdate}/>
       </>
     )
   }
