@@ -13,9 +13,6 @@ const ShowContacts = (props) => {
   return (
     <>
       <h3> Contacts: </h3>
-      <p>Search for a contact:</p>
-      <input type="text" onChange={props.search}/>
-      <br />
       {contactsArr}
     </>
   )
