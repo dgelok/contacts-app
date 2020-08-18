@@ -1,11 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Junk from './components/Junk';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import BaseLayout from './components/layout/BaseLayout.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <BaseLayout>
+      <Switch>
+        <Route exact path="/" component={App}/>
+        <Route path="/junk" component={Junk}/>
+
+        <Route component={App}/>
+        
+      </Switch>
+    </BaseLayout>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
